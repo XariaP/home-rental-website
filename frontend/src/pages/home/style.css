@@ -1,0 +1,111 @@
+@import "../../assets/bootstrap.min.css";
+/* Cards */
+.search .text-bg-darkblue {
+  color:#fff!important;
+  background-color: rgba(12, 43, 118, 0.87);
+  /* background-color:RGBA(13,110,253,var(--bs-bg-opacity,1))!important; */
+}
+
+/* .text-bg-gold {
+  background-color: rgba(243, 218, 77, 0.56);
+  color: black;
+} */
+
+/* .text-bg-purple{
+  color:#fff!important;
+  background-color: rgb(129, 18, 129);
+} */
+
+.search .badge {
+  margin-right: 5px!important;
+}
+
+.search .card-rating-badge {
+  left: 10%!important;
+  top: 6%!important;
+  color: black;
+  font-size: 1rem;
+  vertical-align: middle;
+  background-color: rgba(243, 215, 77, 0.892);
+}
+
+.search div.album .card.shadow-sm:hover {
+  box-shadow:0 .125rem .25rem rgb(93, 9, 142)!important;
+}
+
+.search .card{
+  min-width: 200px;
+  max-width: fit-content;
+  max-width: calc(100%);
+}
+
+.search .bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+    .search .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.housepic {
+  width: 500px;
+  width: 50vw;
+  min-width: 300px;
+  /* max-width: 50vw; */
+  /* display: flex; */
+  align-self: center;
+}
+
+@media (max-width: 768px) {
+    .search .card{
+        min-width: 200px;
+        max-width: fit-content;
+        max-width: 100vw;
+        /* max-width: calc(100vw / 3 - 4vw); */
+    }
+
+    .housepic {
+      width: 100%;
+      /* margin: 0; */
+      /* padding: 0; */
+      align-self: center;
+      min-width: 100%;
+  }
+  
+}
+
+div.card.text-center div {
+    margin: 1px;
+}
+
+.ptitle {
+    font-weight: bold;
+    font-size: large;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.ptitle.heading {
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+
+.large-pill {
+    font-size: 15px;
+    /* font-size: large; */
+    margin: 5px;
+}
+
+.housedetails {
+    display: flex;
+}
+
+.search img {
+  object-fit: cover;
+}

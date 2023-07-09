@@ -1,0 +1,171 @@
+.commentPage .card-no-border .card {
+    border: 0px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
+}
+
+.commentPage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.commentPage div.card {
+    width: 100%;
+    /* display: inline-block; */
+    /* align-self: center;
+    display: flex; */
+    /* width: fi; */
+    /* width: 50%; */
+}
+
+.commentPage .row{
+    display: inline-block;
+    width: 100%;
+}
+
+.commentPage .msg{
+    width: 80%;
+    /* display: flex; */
+    /* display: inline-block; */
+}
+
+.commentPage .card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    width: 100%;
+}
+
+.commentPage .comment-widgets .comment-row:hover {
+    background: rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+}
+
+.commentPage .comment-widgets .comment-row {
+    border-bottom: 1px solid rgba(120, 130, 140, 0.13);
+    padding: 15px;
+    /* width: 90%; */
+    /* background-color: #1976d2; */
+    /* display: inline-flexl */
+}
+.commentPage .comment-text:hover{
+    visibility: hidden;
+}
+.commentPage .comment-text:hover{
+    visibility: visible;
+}
+
+.commentPage .label {
+    padding: 3px 10px;
+    line-height: 13px;
+    color: #ffffff;
+    font-weight: 400;
+    border-radius: 4px;
+    font-size: 75%;
+}
+
+.commentPage .round img {
+    border-radius: 100%;
+    width: 4rem;
+    height: 4rem;
+    
+}
+
+.commentPage .label-info {
+    background-color: #1976d2;
+}
+
+.commentPage .label-success {
+    background-color: green;
+}
+
+.commentPage .label-danger {
+    background-color: #ef5350;
+}
+
+.commentPage .action-icons a {
+    padding-left: 7px;
+    vertical-align: middle;
+    color: #99abb4;
+}
+
+.commentPage .action-icons a:hover {
+    color: #1976d2;
+}
+
+.commentPage.mt-50 {
+    margin-top: 50px;
+}
+
+.commentPage.mb-100 {
+    margin-bottom: 100px;
+}
+
+.commentPage .mt-20 {
+    margin-top: 20px;
+}
+
+body{
+    background-color:#eee
+}
+
+.commentPage .card{
+    /* width:1000px; */
+    border:none;
+    border-radius:8px
+}
+
+.commentPage .form-control{
+    resize:none;
+    height:130px;
+    border:2px solid #eee
+}
+
+.commentPage .form-control:focus{
+    box-shadow:none;
+    border:2px solid red
+}
+
+
+.commentPage .comment-reply {
+    background-color: #cecece34;
+}
+
+/* Star Rating */
+/* Open Source Reference: https://codepen.io/hesguru/pen/BaybqXv */
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    display: none;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}

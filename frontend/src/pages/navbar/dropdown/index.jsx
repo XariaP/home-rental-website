@@ -1,0 +1,49 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+function NavBarDropDown({ icon, name, selected, onClick }) {
+    const getClass = () => {
+        var classes = "nav-link dropdown-toggle";
+        if (selected){
+            classes += " selected";
+        }
+        return classes;
+    }
+
+    function handleClick(){
+        onClick();
+        document.getElementById("dropdownMenu1").setAttribute("aria-expanded", "false");
+        document.getElementById("dropdownMenu2").removeAttribute("data-popper-placement");
+        document.getElementById("dropdownMenu2").classList.remove("show");
+    }
+
+    function getActions(){
+        if (name === "Profile"){
+            return <>
+                <li><Link className="dropdown-item" to="/accounts/myprofile/view" onClick={handleClick}>Visit Profile</Link></li>
+                <li><Link className="dropdown-item" to="/accounts/myprofile/edit" onClick={handleClick}>Settings</Link></li>
+                <li><Link className="dropdown-item" to="/accounts/logout" onClick={handleClick}>Log Out</Link></li>
+            </>;
+        }
+        else if (name === "Guest"){
+            return <>
+                <li><Link className="dropdown-item" to="/accounts/login" onClick={handleClick}>Log In</Link></li>
+                <li><Link className="dropdown-item" to="/accounts/signup" onClick={handleClick}>Sign Up</Link></li>
+            </>;
+        }
+    }
+
+    return <>
+        <li className="nav-item dropdown">
+            <a type="button" className={getClass()} data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenu1">
+                <img className="bi d-block mx-auto mb-1" src={ icon } />
+                { name }
+            </a>
+            <ul className="dropdown-menu dropdown-menu-dark" id="dropdownMenu2">
+                {getActions()}
+            </ul>
+        </li>
+    </>;
+}
+
+export default NavBarDropDown;

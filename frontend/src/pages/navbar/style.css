@@ -1,0 +1,242 @@
+@import "../../assets/bootstrap.min.css";
+:root {
+  --skyblue: rgba(0, 149, 255, 0.818);
+}
+
+body {
+  min-height: 100vh;
+  /* background-color: white; */
+}
+
+.text-small {
+  font-size: 85%;
+}
+
+.text-bold {
+  font-weight: bolder;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.bar {
+  background: linear-gradient( #500a5b, #101a8e);
+  color: #fff;
+}
+
+/* Header (Navigation Bar) */
+.logo {
+  font-size: 30px!important;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif!important;
+  margin: auto;
+}
+
+a.nav-link, a.nav-link:visited, a.nav-link:focus {
+  color: white;
+  width: 120px;
+  text-align: center;
+}
+
+a.nav-link:hover, a.nav-link.selected {
+  color: cyan;
+}
+
+li:hover {
+  background-color: #7a7b8d65;
+}
+
+header .container .text-small {
+  /* font-size: 0.89rem!important; */
+  font-weight: 500!important;
+}
+
+/* Fixed Footer */
+footer{
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 3rem;    /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3rem;            /* Footer height */
+}
+
+.page-nav {
+  padding: 2px 0;
+}
+
+/* Button Designs */
+.btn-blue {
+  background-color: var(--skyblue);
+  color: #fff;
+}
+
+.btn-blue:hover {
+  background-color: rgb(2, 133, 227);
+  color: #fff;
+}
+
+input.btn-check:hover + label:hover {
+  background-color: var(--skyblue);
+  border-color: var(--skyblue);
+  color: white;
+}
+
+/* Notifications */
+.corner-badge {
+  left: 70%!important;
+  top: 20%!important;
+}
+
+.modal-icon {
+  padding: 0 5px;
+}
+
+.modal-title {
+  color: white;
+}
+
+.btn-close {
+  background-color: #fff;
+}
+
+.btn-row.equal-size {
+  /* width: 65%; */
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-row.equal-size a{
+  width: 30%;
+}
+
+/* Section Tabs */
+div.tab-content {
+  display: flex;
+}
+
+button.nav-link {
+  color: black;
+}
+
+button.nav-link.active {
+  color: blue!important;
+  font-weight: 500;
+}
+
+button.nav-link:hover {
+  color: blue!important;
+}
+
+.nav-tabs .nav-item:hover {
+  background-color: #a9a8a820;
+  border-radius: 6px 6px 0 0;
+  /* font-weight: bold; */
+}
+
+.page-item {
+  border-radius: 6px;
+}
+
+/* Forms */
+.input-group.time-range {
+  width: 300px;
+}
+
+@media (max-width: 767.5px) {
+  .input-group.time-range {
+    width: 100%;
+  } 
+}
+
+input[type="date"], select{
+  cursor: pointer;
+}
+
+input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+/* https://stackoverflow.com/questions/66147445/cursor-pointer-when-mouse-over-on-date-and-time-picker-icon-on-chrome-browser */
+
+.grey-star {
+  color:#ccc;
+  font-size: 1.2rem;
+}
+
+.gold-star {
+  color: #ffc700;
+  font-size: 1.2rem;
+}
+
+/* Cards */
+.text-bg-darkblue {
+  color:#fff!important;
+  background-color: rgba(12, 43, 118, 0.87);
+  /* background-color:RGBA(13,110,253,var(--bs-bg-opacity,1))!important; */
+}
+
+.badge {
+  margin-right: 5px!important;
+}
+
+.card-rating-badge {
+  left: 10%!important;
+  top: 6%!important;
+  color: black;
+  font-size: 1rem;
+  vertical-align: middle;
+  background-color: rgba(243, 215, 77, 0.892);
+}
+
+div.album .card.shadow-sm:hover {
+  box-shadow:0 .125rem .25rem rgb(93, 9, 142)!important;
+}
+
+.card{
+  min-width: 200px;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+img {
+  object-fit: cover;
+}
+
+/* errors */
+p.error, span.error {
+  color: red;
+}
+
+.whitebg {
+  background-color: #fff;
+  max-height: fit-content;
+  width: 100%;
+  margin: 20px 0px;
+  padding-bottom: 20px;
+  display: inline-block;
+}

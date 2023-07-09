@@ -1,0 +1,158 @@
+body{
+  background-color:#eee;
+}
+
+.profile .height-100{
+  height:100%;
+}
+
+.profile .card{
+  width:60vw;
+  border:none;
+}
+
+@media (max-width: 768px) {
+  .profile .card{
+    width:100%;
+  }
+}
+
+.profile .dots {
+  height: 20px;
+  width: 20px;
+  margin-top:4px;
+  margin-left:4px;
+  background-color:#dc3545;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:10px;
+}
+
+.profile .list li{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:13px;
+  border-top:1px solid #eee;
+  cursor:pointer;
+}
+
+.profile .list li:hover{
+  /* background-color:#dc3545; */
+  background-color: rgb(2, 133, 227);
+  color:#fff;
+}
+
+.profile a.comment {
+  text-decoration: none;
+  text-decoration-line: none;
+  color: black;
+}
+
+.profile #description {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.profile #contact-info {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.profile .title {
+  font-size: 0.9rem;
+}
+
+/* Profile Page */
+.profile .profile {
+  margin: 30px;
+}
+
+.profile #edit-photo {
+  width: max-content;
+}
+
+.profile .avatar {
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.5rem;
+  border-color: rgba(0, 149, 255, 0.571);
+  width: 10rem;
+  height: 10rem;
+  /* object-fit:contain; */
+}
+
+@media (max-width: 767.5px) {
+  .profile .avatar-center {
+    margin: auto;
+    width: max-content;
+  }
+
+  .profile div.edit-center {
+    align-items: center;
+  }
+  
+  .profile #edit-photo {
+    width: 100%;
+  }
+
+  .profile .nav.flex-column {
+    flex-direction: row!important;
+    justify-content: center;
+  }
+
+}
+
+.profile {
+  margin-top: 20px;
+}
+
+@media (max-width: 491px) {
+  .profile .sm-avatar-edit {
+    display: block;
+    margin: auto;
+  }
+
+  .profile .lg-avatar-edit {
+    display: none;
+  }
+  .profile form {
+    margin: 10px;
+  }
+}
+
+@media (min-width: 492px) {
+  .profile .sm-avatar-edit {
+    display: none;
+  }
+
+  .profile .lg-avatar-edit {
+    display: block;
+  }
+}
+
+.profile .nav-pills .nav-link.active {
+  background-color: var(--skyblue)!important;
+  color: #fff!important;
+}
+
+.profile .nav-pills .nav-link:hover {
+  background-color: rgba(211, 211, 211, 0.463);
+  color: black;
+}
+
+.profile .nav-pills{
+  background-color: rgba(211, 211, 211, 0.148);
+}
+
+.profile .time-label {
+  width: 65px;
+  display: flex;
+  justify-content: center;
+  background-color: var(--skyblue);
+  color: #fff;
+}

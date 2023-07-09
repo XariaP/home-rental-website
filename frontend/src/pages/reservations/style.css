@@ -1,0 +1,153 @@
+.res h6 {
+  margin: 0 0 0.1rem 0;
+}
+
+button.no-style {
+  margin: 0 0 0 0;
+  border: none;
+  padding: 0 0 0 0;
+  width: 100%;
+  background-color: transparent;
+}
+
+.res .summaryinfo button {
+  margin: 0 20px;
+  /* width: 5rem; */
+  /* display: flex; */
+  justify-content: center;
+  /* flex-direction: ; */
+}
+
+.res .summaryinfo {
+  width: 100%;
+}
+
+.res svg {
+  margin-top: 0.2rem;
+  height: 1.2rem;
+  width: auto;
+}
+
+.res .no {
+  margin-top: 0;
+  height: 1.2rem;
+  width: auto;
+  display: block;
+}
+.res .bold {
+  font-weight: 700;
+}
+.res .nonmargin {
+  margin: 0 0 0.1rem 0;
+}
+.res .icons {
+  display: flex;
+  flex-direction: row;
+}
+.res .resimage {
+  object-fit: cover;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+}
+.res .undoflex {
+  flex-direction: row;
+}
+.res .slightpad {
+  margin-left: 0.2rem;
+  /* padding-left: 0.3rem; */
+}
+.res .padded3 {
+  justify-content: center;
+  align-items: center;
+  padding-left: 1rem;
+  padding-top: 0.75rem;
+}
+
+.res .padded2 {
+  padding-left: 1rem;
+}
+
+.res .padded1 {
+  margin-top: 4rem;
+}
+
+.res .padded {
+  justify-content: center;
+  align-items: center;
+  padding-left: 1rem;
+  padding-top: 0.25rem;
+}
+
+.res .newheading {
+  padding-top: 3rem;
+}
+
+.rescard {
+  background: #fff;
+  border-bottom: 0.0625rem solid #d8d9db;
+  border-bottom-width: 0.0625rem;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(216, 217, 219);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.res .summaryinfo {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  /* width: max-content; */
+}
+
+.res .requests-nav {
+  background-color: #fff;
+  /* border: #d8d9db solid 1px; */
+}
+
+.res .requests-nav button {
+  margin: 2px;
+}
+
+@media (max-width:767px) {
+  .res .requests-nav .nav-pills {
+      display: flex;
+      justify-content: space-evenly;
+  }   
+}
+
+.res .requests-nav .nav-pills {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  
+}   
+
+.res .nav-pills .nav-link.active {
+  background-color: rgba(0, 149, 255, 0.818)!important;
+  /* background-color: rgba(89, 20, 201, 0.818)!important; */
+  color: #fff!important;
+  /* color: black!important; */
+}
+
+.res .nav-pills .nav-link:hover {
+  /* background-color: rgba(211, 211, 211, 0.463); */
+  background-color: rgba(211, 211, 211, 0.733);
+  color: black;
+}
+
+.res .nav-pills .nav-link {
+  background-color: rgba(211, 211, 211, 0.232);
+}
+
+.res .empty-list {
+  margin: auto;
+}
+
+.res .tab-pane {
+  width: 100%;
+}
