@@ -9,7 +9,6 @@ export default function EditGeneralUserInfo(props) {
     const [lname, setLname] = useState();
     const [email, setEmail] = useState();
     const [phonenum, setPhonenum] = useState();
-    // const [changes, setChanges] = useState(false);
 
     async function viewInfo(){
         var is_valid;
@@ -27,7 +26,6 @@ export default function EditGeneralUserInfo(props) {
             return request.json();
         })
         .then((data) => {
-            // console.log(data);
             setFname(data.first_name);
             setLname(data.last_name);
             setEmail(data.email)
@@ -57,8 +55,6 @@ export default function EditGeneralUserInfo(props) {
             return request.json();
         })
         .then((data) => {
-            // (data);
-
             var email_status = "";
             var phoneNum_status = "";
             var main_status = "";
@@ -84,7 +80,6 @@ export default function EditGeneralUserInfo(props) {
             err_email.innerHTML = email_status;
             err_phoneNum.innerHTML = phoneNum_status;
             status.innerHTML = main_status;
-            // document.getElementById("status").innerHTML = main_status;
         });
     }
 
@@ -101,8 +96,6 @@ export default function EditGeneralUserInfo(props) {
             updates['email'] = email;
         if (phonenum)
             updates['phone_number'] = phonenum;
-        // else
-        //     updates['phone_number'] = "";
         
         await editInfo(updates);
     }

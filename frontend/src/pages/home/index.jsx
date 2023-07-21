@@ -1,13 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-// import LargeCard from "../../components/largeCard";
-// import { UserContext } from "../../contexts";
 import PropertyCard from "../property/card";
 import "./style.css";
 import SearchBar from "../../components/searchbar";
 
 
 function Home(props) {
-    // const { token } = useContext(UserContext);
     const [ properties, setProperties ] = useState([]);
     const [ count, setCount ] = useState(0);
     const [nextPage, setNextPage] = useState(null);
@@ -22,7 +19,6 @@ function Home(props) {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
-                    // 'Authorization' : `Bearer ${token}`,
                 },
             })
         .then((request) => {
@@ -71,7 +67,6 @@ function Home(props) {
         //             [reservation.id]: property
         //           }));
         //         });
-        //         //console.log(propertyDetails);
         //     }
         //   });
           setIsLoading(false);
@@ -82,7 +77,6 @@ function Home(props) {
         if (properties)
             return <>
                 {properties.map(rental => {
-                    //console.log(rental);
                     return <PropertyCard key={rental.id} rental={rental}/>;
                     })}
                 
@@ -92,10 +86,7 @@ function Home(props) {
     } 
 
     const searchbar = () => {
-        // if (token)
-            return <SearchBar numresults={count}/>;
-        // else
-            // return <></>;
+        return <SearchBar numresults={count}/>;
     }
 
 

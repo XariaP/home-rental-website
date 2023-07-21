@@ -41,7 +41,6 @@ export default function PropertyComment(props) {
         })
         .then((data) => {
             if (is_valid){
-                //console.log(data);
                 var total =  Math.ceil(data.count / 5);
                 if (total == 0)
                     total = 1;
@@ -85,14 +84,7 @@ export default function PropertyComment(props) {
     }, [commentList])
 
     async function handleRefresh() {
-        // console.log(total, datacount);
         await getComments();
-        // if (datacount % 5 == 0){
-        //     pg = parseInt(total) + 1;
-        //     navigate(link + pg);
-        // }
-        // else
-        //     navigate(link + total);
     }
 
     const forbidden = (msg) => {

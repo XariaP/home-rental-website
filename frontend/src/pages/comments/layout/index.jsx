@@ -3,7 +3,6 @@ import { UserContext } from "../../../contexts";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "../style.css"
 import Pagination from "../../../components/pagination";
-// import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js";
 
 export default function CommentPage({type, content, page, link, total}) {
     const { token } = useContext(UserContext);
@@ -11,8 +10,6 @@ export default function CommentPage({type, content, page, link, total}) {
     const [fname, setFname] = useState();
     const [lname, setLname] = useState();
     const [pname, setPname] = useState();
-    // const [email, setEmail] = useState();
-
     const [host, setHost] = useState(null);
     const [myID, setMyID] = useState(null);
 
@@ -32,11 +29,8 @@ export default function CommentPage({type, content, page, link, total}) {
             return response.json();
         })
         .then((data) => {
-            // console.log(data);
-            // console.log(link);
             setFname(data.first_name);
             setLname(data.last_name);
-            // setEmail(data.email);
         })
     }
 
@@ -104,12 +98,6 @@ export default function CommentPage({type, content, page, link, total}) {
             return pname;
     }
 
-    // if (type === "user" && (!fname || !lname || !content))
-    //     return <></>;
-    
-    // if (type === "property" && (!content))
-    //     return <></>;
-    
     return <>
 
         <button
@@ -122,17 +110,9 @@ export default function CommentPage({type, content, page, link, total}) {
         
             <div className="row">
                 <div className="col-md-12">
-
-                {/* <button
-                    className="btn text-bg-primary"
-                    onClick={() => navigate(-1)}>
-                    Go Back
-                </button> */}
-
                     <div className="card">
                         <div className="card-body">
                             <h4 className="card-title">Comments about <Link to={link2()}>{getName()}</Link></h4>
-                            {/* <h6 className="card-subtitle">Be the first to comment</h6> */}
                         </div>
 
                         <div className="comment-widgets m-b-20">

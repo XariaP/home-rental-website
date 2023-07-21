@@ -1,7 +1,5 @@
-// Copied from P1, Needs editing
 import React, {useEffect, useContext, useState} from "react";
 import { formatDistanceToNow } from 'date-fns';
-// import "./style.css";
 import icons from "../../components/icons";
 import { UserContext } from "../../contexts";
 import { useNavigate } from "react-router-dom";

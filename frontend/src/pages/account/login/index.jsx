@@ -5,11 +5,7 @@ import { PageContext, UserContext } from "../../../contexts";
 import LargeCard from "../../../components/largeCard";
 import UserLogInput from "../../../components/input1";
 
-// https://stackoverflow.com/questions/60923858/react-js-get-error-message-despite-http-response-400
-
-// https://stackoverflow.com/questions/39724481/cannot-post-error-react-js
 function Login(props) {
-    // const [user, setUser] = useState(null);
     const { setPage } = useContext(PageContext);
     const { setToken } = useContext(UserContext);
     const [email, setEmail] = useState();
@@ -19,21 +15,16 @@ function Login(props) {
     async function loginUser(credentials){
         fetch('http://localhost:8000/accounts/login/',
             {
-                // mode: "cors",
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
-                    // 'Access-Control-Allow-Origin': '*',
-                    // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
                 },
                 
                 body: JSON.stringify(credentials),
             })
         .then((resquest) => resquest.json())
         .then((data) => {
-            // console.log(data);
-
             if (data.detail){
                 document.getElementById("error-main").innerText = data.detail;
             }
@@ -56,7 +47,6 @@ function Login(props) {
             if (data.access){
                 const token = data.access;
                 setToken(token);
-                // console.log(token);
                 setPage("search");
                 navigate("/home");
             }

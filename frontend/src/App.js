@@ -44,16 +44,6 @@ function App() {
             <Route path=":propertyID/popup" element={<BookingPopup />}/>
           </Route>
 
-          {/* <Route path="reservations/" element={<Reservations />}>
-            <Route path="create" />
-            <Route path=":reservationID/cancel" />
-            <Route path=":reservationID/approve" />
-            <Route path=":reservationID/deny" />
-            <Route path=":reservationID/approve_cancel" />
-            <Route path=":reservationID/deny_cancel" />
-            <Route path=":reservationID/terminate" />
-          </Route> */}
-
           <Route path="reservations/" element={<Reservations />}>
             <Route path="create" />
             <Route path=":reservationID/cancel" />
@@ -83,22 +73,15 @@ function App() {
           <Route path="comments/">
           <Route path="user/:userID/view" element={<UserComment />} />
           <Route path="user/:userID/view/page/:pageNum" element={<UserComment />} />
-            {/* <Route path="user/:UserID/add" /> */}
             <Route path="property/:propertyID/view" element={<PropertyComment />} />
             <Route path="property/:propertyID/view/page/:pageNum" element={<PropertyComment />} />
-            {/* <Route path="property:/propertyID/add" /> */}
-            {/* <Route path="property:/propertyID/reply/:commentID" /> */}
           </Route>
           
           <Route path="properties/">
             <Route path="add" element={<EditProperty />}/>
             <Route path=":propertyID/update" element={<EditProperty />}/>
-            {/* <Route path=":propertyID/delete" /> */}
             <Route path=":propertyID/details" element={<Property />}/>
             <Route path="manage" element={<MyProperty />}/>
-            {/* <Route path=":propertyID/dates/create" /> */}
-            {/* <Route path=":propertyID/dates/update" /> */}
-            {/* <Route path=":propertyID/dates/delete" /> */}
             <Route path="search" element={<Home />} />
           </Route>
         </Route>

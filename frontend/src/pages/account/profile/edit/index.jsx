@@ -35,7 +35,6 @@ function EditProfile(props) {
             return request.json();
         })
         .then((data) => {
-            // console.log(data);
             setPic(data.avatar);
             setFname(data.first_name);
             setLname(data.last_name);
@@ -81,7 +80,6 @@ function EditProfile(props) {
                 <div className="card text-center">
                     <div className="row py-5 px-5">
                         <div className="mx-auto">
-                            {/* <img className="mb-4" src={icons["logo"]} alt="" height="90" /> */}
                             <h3 className="fw-light">{msg}</h3>
                         </div>
                     </div>

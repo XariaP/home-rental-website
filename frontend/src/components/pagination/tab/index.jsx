@@ -7,12 +7,10 @@ export default function Tab({num, active, link}) {
         if (active){
             cl += " active";
         }
-        // console.log(link);
         return cl;
     }
 
     const fulllink = () => {
-        // console.log(link + num);
         return link + num;
     }
     

@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js";
 import ReplyCard from "../reply";
 import ReplyBox from "../replyarea";
-// import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js";
 
 export default function CommentCard({type, comment, refresh}) {
     const { token } = useContext(UserContext);
@@ -33,7 +32,6 @@ export default function CommentCard({type, comment, refresh}) {
             return response.json();
         })
         .then((data) => {
-            // console.log(data.avatar);
             setPic(data.avatar);
         })
     }
@@ -58,7 +56,6 @@ export default function CommentCard({type, comment, refresh}) {
             nostar += '★ ';
             count++;
         }
-        // console.log(replies);
 
         return <>
             <span className="gold-star">{goldstars}</span><span className="grey-star">{nostar}</span>
@@ -70,8 +67,6 @@ export default function CommentCard({type, comment, refresh}) {
             {
                 method: 'DELETE',
                 headers: {
-                    // 'Content-Type': 'application/json',
-                    // 'Accept': 'application/json',
                     'Authorization' : `Bearer ${token}`,
                 },
             })
@@ -99,7 +94,6 @@ export default function CommentCard({type, comment, refresh}) {
                 <div className="collapse" id={getReplyCtrl()}>
                     <div className="card card-body">
                         {replies.map(reply => {
-                            // console.log(reply.id);
                             return <ReplyCard key={reply.id} reply={reply}/>
                         })}
                     </div>
@@ -110,7 +104,6 @@ export default function CommentCard({type, comment, refresh}) {
     }
 
     const getReplyID = () => {
-        // console.log("#reply" + ID);
         return "#reply" + ID;
     }
 
@@ -121,7 +114,6 @@ export default function CommentCard({type, comment, refresh}) {
     if (pic)
         return <>
         <div className="d-flex flex-row comment-row"  data-bs-toggle="collapse" data-bs-target={getReplyID()} aria-expanded="false" aria-controls={getReplyCtrl()}>
-            {/* <div className="d-flex flex-row comment-row"  data-bs-toggle="collapse" data-bs-target={getReplyID()} aria-expanded="false" aria-controls={getReplyID()} onClick={deleteComment}> */}
                 <div className="p-2"><span className="round"><img src={pic} alt="user" width="50"/></span></div>
                 <div className="comment-text w-100">
                     <h5>{author}</h5>

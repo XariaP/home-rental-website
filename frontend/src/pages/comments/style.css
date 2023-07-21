@@ -12,11 +12,6 @@
 }
 .commentPage div.card {
     width: 100%;
-    /* display: inline-block; */
-    /* align-self: center;
-    display: flex; */
-    /* width: fi; */
-    /* width: 50%; */
 }
 
 .commentPage .row{
@@ -26,8 +21,6 @@
 
 .commentPage .msg{
     width: 80%;
-    /* display: flex; */
-    /* display: inline-block; */
 }
 
 .commentPage .card-body {
@@ -45,9 +38,6 @@
 .commentPage .comment-widgets .comment-row {
     border-bottom: 1px solid rgba(120, 130, 140, 0.13);
     padding: 15px;
-    /* width: 90%; */
-    /* background-color: #1976d2; */
-    /* display: inline-flexl */
 }
 .commentPage .comment-text:hover{
     visibility: hidden;
@@ -111,7 +101,6 @@ body{
 }
 
 .commentPage .card{
-    /* width:1000px; */
     border:none;
     border-radius:8px
 }

@@ -1,17 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts";
-import { Link, useParams } from "react-router-dom";
-// import house from "../../../assets/imgs/house-1477041__340.jpg";
+import { Link } from "react-router-dom";
 import house from "../../../assets/imgs/rental-placeholder.png";
-import icons from "../../../components/icons";
 
 
 export default function PropertyCard({rental}) {
     const { token } = useContext(UserContext);
-    // const [ name, setName ] = useState("");
-    // const [ desc, setDesc ] = useState("");
-    // const [ address, setAddress ] = useState("");
-    // const [ pic, setPic ] = useState(null);
     const [ beds, setBeds ] = useState(0);
     const [ baths, setBaths ] = useState(0);
     const [ max, setMax ] = useState(0);
@@ -35,7 +29,6 @@ export default function PropertyCard({rental}) {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
-                    // 'Authorization' : `Bearer ${token}`,
                 },
             })
         .then((request) => {
@@ -43,7 +36,6 @@ export default function PropertyCard({rental}) {
             return request.json();
         })
         .then((data) => {
-            //console.log(data, "k");
             setBeds(data.num_beds);
             setBaths(data.num_baths);
             setMax(data.num_guests);
@@ -92,7 +84,6 @@ export default function PropertyCard({rental}) {
     }
 
     function getLink(){
-        // console.log(host, myID);
         if (host == myID){
             return editLink;
         }
@@ -108,11 +99,6 @@ export default function PropertyCard({rental}) {
 
     if (loaded)
         return <>
-            {/* {name}
-            {desc}
-            {add}
-            {pic}
-            {host} */}
             <div className="col">
                 <div className="card shadow-sm">
                     {/* <span className='position-absolute card-rating-badge translate-middle badge rounded-pill'> <img src={icons['star']}/></span> */}

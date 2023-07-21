@@ -18,12 +18,10 @@ function Logout() {
             })
         .then((resquest) => resquest.json())
         .then((data) => {
-            // console.log(data);
         })
     }
 
     useEffect(() => {
-        // console.log(token);
         if (token){
             setToken("");
             setMsg("Logout successful!");

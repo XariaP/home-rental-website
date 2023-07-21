@@ -43,7 +43,6 @@ export default function UserComment(props) {
         })
         .then((data) => {
             if (is_valid){
-                // console.log(data);
                 var total =  Math.ceil(data.count / 5);
                 if (total == 0)
                     total = 1;
@@ -52,7 +51,6 @@ export default function UserComment(props) {
                 setCommentList(data.results);
             }
             else {
-                // console.log(data);
                 if (code == 404){
                     setMsg("This user does not exist");
                 }
@@ -67,7 +65,6 @@ export default function UserComment(props) {
     }
 
     useEffect(() => {
-        // console.log(pg);
         getComments();
     }, [pg])
 

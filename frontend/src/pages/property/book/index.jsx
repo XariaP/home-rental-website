@@ -1,13 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../../../contexts";
-import { Link, useParams } from "react-router-dom";
-import placeholder from "../../../assets/imgs/rental-placeholder.png";
-import icons from "../../../components/icons";
-import LargeCard from "../../../components/largeCard";
+import { useParams } from "react-router-dom";
 import BackButton from "../../../components/backbutton";
-import BookingPopup from "../bookingPop";
 import "./styles.css"
-import Property from "../details";
 
 export default function Book(props) {
     const { token } = useContext(UserContext);

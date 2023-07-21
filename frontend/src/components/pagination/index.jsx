@@ -14,19 +14,15 @@ export default function Pagination({total, pg, link}){
             list[count] = count;
             count++;
         }
-        // console.log(list);
         return <>
             {list.map( page => {
-                // console.log(pg, page);
                 var act = (page == pg);
-                // console.log(act);
                 return <Tab key={page} num={page} active={act} link={link}/>
             })}
         </>;
     }
 
     return <>
-        {/* <div className="page-nav bg-light sticky-bottom"> */}
         <div className="page-nav bg-light">
             <nav aria-label="Page navigation example" className="mt-3">
             <ul className="mb-3 pagination justify-content-center" id="search-tab" role="tablist">

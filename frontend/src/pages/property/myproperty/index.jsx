@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-// import LargeCard from "../../components/largeCard";
 import { PageContext, UserContext } from "../../../contexts";
 import PropertyCard from "../../property/card";
 import { Link } from "react-router-dom";
-// import "./style.css";
 
 
 export default function MyProperty(props) {
@@ -27,9 +25,7 @@ export default function MyProperty(props) {
             return request.json();
         })
         .then((data) => {
-            // console.log(data, "k");
             setProperties(data.results);
-            //console.log(properties);
         })
     }
 
@@ -42,7 +38,6 @@ export default function MyProperty(props) {
         if (properties)
             return <>
                 {properties.map(rental => {
-                    //console.log(rental);
                         return <PropertyCard key={rental.id} rental={rental} />;
                     })}
             </>;

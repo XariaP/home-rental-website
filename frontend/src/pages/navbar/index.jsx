@@ -35,7 +35,6 @@ function NavBar(props) {
 
   const changePage = (dest) => {
     setPage(dest);
-    // console.log(page);
   }
 
   function isLoggedIn(){
@@ -60,8 +59,6 @@ function NavBar(props) {
     })
     .then((data) => {
       if (data.count >= 1) { setNotifCount(data.count); }
-      console.log(data, data.count);
-      // setNotifCount(data.count);
     })
   }
 
@@ -81,8 +78,6 @@ function NavBar(props) {
       return <>
         <NavBarButton link="/home" icon={getIcon("search", "search")} name="Find Rental" selected={isSelected("search")} onClick={() => changePage("search")} />
         <NavBarButton link="/properties/manage" icon={getIcon("rentals", "houses")} name="My Properties" selected={isSelected("rentals")} onClick={() => changePage("rentals")} />
-
-        {/* <NavBarButton link="/reservations" icon={getIcon("reservations", "calendar")} name="Reservations" selected={isSelected("reservations")} onClick={() => changePage("reservations")} /> */}
         
         <NavBarButton link="/reservations" icon={getIcon("reservations", "calendar")} name="Reservations" selected={isSelected("reservations")} onClick={() => changePage("reservations")} />
         <NavBarButton link="/requests" icon={getIcon("requests", "booking")} name="Requests" selected={isSelected("requests")} onClick={() => changePage("requests")} />

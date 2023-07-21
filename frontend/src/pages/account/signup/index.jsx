@@ -36,17 +36,10 @@ function Signup(props) {
             })
         .then((resquest) => resquest.json())
         .then((data) => {
-            // console.log(data);
-
             var email_status = "";
             var pass1_status = "";
             var pass2_status = "";
 
-            // var main_status = "";
-            // if (data.detail)
-                // main_status = data.detail;
-            // document.getElementById("error-main").innerText = main_status;
-        
             if (data.email)
                 email_status = data.email;
                 
@@ -87,7 +80,6 @@ function Signup(props) {
             })
         .then((resquest) => resquest.json())
         .then((data) => {
-            // console.log(data);
             const token = data.access;
             if (token){
                 setToken(token);

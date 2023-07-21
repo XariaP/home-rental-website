@@ -32,7 +32,6 @@ function Request(props) {
           return response.json();
         })
         .then((data) => {
-          //console.log(data);
           setNextPage(data.next);
           setReservations(data.results);
           data.results.forEach(reservation => {
@@ -43,7 +42,6 @@ function Request(props) {
                     [reservation.id]: property
                   }));
                 });
-                //console.log(propertyDetails);
             }
            });
            setIsLoading(false);
@@ -57,7 +55,6 @@ function Request(props) {
 
       function handleFilterSubmit(event) {
         event.preventDefault();
-        // const userType = event.target.elements.usertype.value;
         const status = event.target.value;
         let url = `http://localhost:8000/reservations/`;
         if (status){
@@ -98,7 +95,6 @@ function Request(props) {
           return response.json();
         })
         .then((data) => {
-          //console.log(data);
           setNextPage(data.next);
           setReservations((prevReservations) => [
             ...prevReservations,
@@ -112,7 +108,6 @@ function Request(props) {
                     [reservation.id]: property
                   }));
                 });
-                //console.log(propertyDetails);
             }
           });
           setIsLoading(false);
@@ -132,7 +127,6 @@ function Request(props) {
     async function getPropertyDetails(propertyId) {
         try {
           const property = await fetchPropertyDetails(propertyId);
-          //console.log(property);
           return property;
         } catch (error) {
           console.error('Error getting property details:', error);

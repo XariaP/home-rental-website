@@ -5,7 +5,6 @@
 
 body {
   min-height: 100vh;
-  /* background-color: white; */
 }
 
 .text-small {
@@ -47,7 +46,6 @@ li:hover {
 }
 
 header .container .text-small {
-  /* font-size: 0.89rem!important; */
   font-weight: 500!important;
 }
 
@@ -114,7 +112,6 @@ input.btn-check:hover + label:hover {
 }
 
 .btn-row.equal-size {
-  /* width: 65%; */
   display: flex;
   justify-content: space-evenly;
 }
@@ -144,7 +141,6 @@ button.nav-link:hover {
 .nav-tabs .nav-item:hover {
   background-color: #a9a8a820;
   border-radius: 6px 6px 0 0;
-  /* font-weight: bold; */
 }
 
 .page-item {
@@ -185,7 +181,6 @@ input::-webkit-calendar-picker-indicator {
 .text-bg-darkblue {
   color:#fff!important;
   background-color: rgba(12, 43, 118, 0.87);
-  /* background-color:RGBA(13,110,253,var(--bs-bg-opacity,1))!important; */
 }
 
 .badge {

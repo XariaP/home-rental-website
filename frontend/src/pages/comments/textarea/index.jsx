@@ -110,9 +110,6 @@ export default function CommentBox({type, refresh}) {
             return response.json();
         })
         .then((data) => {
-            // console.log(code);
-            // console.log(data);
-
             var msg;
             if (code == 201){
                 msg = "Comment posted!";
@@ -138,14 +135,11 @@ export default function CommentBox({type, refresh}) {
                     msg = "You have no completed or terminated reservations at this property!";
                 }
             }
-            // console.log(msg);
             document.getElementById("status").innerHTML = msg;
         })
     }
 
     const handleSubmit = () => {
-        // console.log(new_content, new_rate);
-        // console.log(document.getElementById("star1").checked);
         postComment({
             content: new_content,
             rating: new_rate,

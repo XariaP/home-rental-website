@@ -26,8 +26,6 @@ export default function EditPassword(props) {
             return request.json();
         })
         .then((data) => {
-            // console.log(data);
-
             var pass1_status = "";
             var pass2_status = "";
 

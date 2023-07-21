@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts";
 import { Link, useParams } from "react-router-dom";
 import placeholder from "../../../assets/imgs/rental-placeholder.png";
-import icons from "../../../components/icons";
 import LargeCard from "../../../components/largeCard";
 import BackButton from "../../../components/backbutton";
 
@@ -20,14 +19,6 @@ export default function Property(props) {
     const [ baths, setBaths ] = useState(0);
     const [ max, setMax ] = useState(0);
     const [ stuff, setStuff ] = useState([]);
-    // const navigate = useNavigate();
-
-    // const name = host.name;
-    // const desc = host.description;
-    // const add = host.address;
-    // const pic = host.img;
-    // const host = host.host;
-    // const ID = host.id;
 
     async function viewInfo(){
         var is_valid;
@@ -37,7 +28,6 @@ export default function Property(props) {
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
-                    // 'Authorization' : `Bearer ${token}`,
                 },
             })
         .then((request) => {
@@ -45,7 +35,6 @@ export default function Property(props) {
             return request.json();
         })
         .then((data) => {
-            //console.log(data, "k");
             setHost(data.host);
             setName(data.name);
             setDesc(data.description);
@@ -76,8 +65,6 @@ export default function Property(props) {
             return request.json();
         })
         .then((data) => {
-            //console.log(data, "k");
-            
             var fullname = data.first_name + " " + data.last_name;
             if (fullname != " ")
                 setHostName(fullname);
@@ -114,7 +101,6 @@ export default function Property(props) {
         if (token){
             return <>
                 <Link className="btn btn-secondary" to={profileLink}>Contact Host: {hostName}</Link>
-                {/* <Link className="btn btn-secondary" to={profileLink} style={{width:"50vw"}}>Contact Host: {hostName}</Link> */}
             </>;
         }
         else {
@@ -158,9 +144,6 @@ export default function Property(props) {
     }
     const contents = () => {
         return <>
-         {/* <div className="col">
-            
-            </div> */}
         {/* <button
             className="btn text-bg-primary"
             onClick={() => navigate(-1)} style={{width:"50vw"}}>

@@ -27,9 +27,6 @@ export default function ReplyBox({commentID, refresh}) {
             return response.json();
         })
         .then((data) => {
-            // console.log(code);
-            // console.log(data);
-
             var msg;
             if (code == 201){
                 msg = "Comment posted!";
