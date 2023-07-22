@@ -1,22 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-// import LargeCard from "../../components/largeCard";
-import { UserContext, SearchContext } from "../../contexts";
+import React, { useContext } from "react";
+import { SearchContext } from "../../contexts";
 import "./style.css";
 import { Link } from "react-router-dom";
 
 
 export default function SearchBar({numresults}) {
-    const { token } = useContext(UserContext);
-    const [ properties, setProperties ] = useState([]);
-    // const [ beds, setBeds ] = useState(0);
-    // const [ baths, setBaths ] = useState(0);
-    // const [ guests, setGuests ] = useState(0);
     const {beds, baths, guests, search, setBeds, setBaths, setGuests, setSearch} = useContext(SearchContext);
-    // console.log(useContext(SearchContext));
-
-    // var beds = 0;
-    // var baths = 0;
-    // var max = 0;
 
     const searchLink = () => {
       var link = `?`;
@@ -42,8 +31,6 @@ export default function SearchBar({numresults}) {
       setGuests(e.target.value);
     }
 
-
-
     return <>
         <section className="py-5 text-center container">
           <div className="row">
@@ -59,15 +46,6 @@ export default function SearchBar({numresults}) {
                 <div className="collapse mb-3 " id="filterForm">  
                   <div className="card card-body searchbar">
                     <h4>Filter by</h4>
-                    {/* <div className="input-group mb-3">
-                      <label className="input-group-text btn-blue" htmlFor="inputGroupSelect01">Location</label>
-                      <select className="form-select" id="inputGroupSelect01">
-                        <option selected>Any</option>
-                        <option value="1">Toronto, Canada</option>
-                        <option value="2">Houston, Texas</option>
-                        <option value="3">Montreal, Canada</option>
-                      </select>
-                    </div> */}
 
                     <label htmlFor="numguests" className="form-label filter-label mt-3">Number of Guests</label>
                     <div className="mb-3 options" onChange={handleGuestsChange}>
@@ -111,57 +89,6 @@ export default function SearchBar({numresults}) {
                       <label className="btn btn-outline-primary" htmlFor="bath4">4+</label>
                     </div>
 
-                    {/* <label className="form-label filter-label mt-3"> Ammenities Included (Select all that apply)</label>
-                    <div className="row g-3 mb-3 justify-content-center">
-                      <div className="col-auto">
-                        <input type="checkbox" className="btn-check" id="btn-check-outlined"/>
-                        <label className="btn btn-outline-primary" htmlFor="btn-check-outlined">Hot Water</label>
-                      </div>
-                      <div className="col-auto">
-                        <input type="checkbox" className="btn-check" id="btn-check-2-outlined"/>
-                        <label className="btn btn-outline-primary" htmlFor="btn-check-2-outlined">Air conditioning</label>
-                      </div>
-                      <div className="col-auto">
-                        <input type="checkbox" className="btn-check" id="btn-check-3-outlined"/>
-                        <label className="btn btn-outline-primary" htmlFor="btn-check-3-outlined">Heater</label>
-                      </div>
-                      <div className="col-auto">
-                        <input type="checkbox" className="btn-check" id="btn-check-4-outlined"/>
-                        <label className="btn btn-outline-primary" htmlFor="btn-check-4-outlined">Wifi</label>
-                      </div>
-                      <div className="col-auto">
-                        <input type="checkbox" className="btn-check" id="btn-check-5-outlined"/>
-                        <label className="btn btn-outline-primary" htmlFor="btn-check-5-outlined">Free Parking</label>
-                      </div>
-                      <div className="col-auto">
-                        <input type="checkbox" className="btn-check" id="btn-check-6-outlined"/>
-                        <label className="btn btn-outline-primary" htmlFor="btn-check-6-outlined">TV</label>
-                      </div>
-                      <div className="col-auto">
-                        <input type="checkbox" className="btn-check" id="btn-check-7-outlined"/>
-                        <label className="btn btn-outline-primary" htmlFor="btn-check-7-outlined">Backyard</label>
-                      </div>
-                      <div className="col-auto">
-                        <input type="checkbox" className="btn-check" id="btn-check-8-outlined"/>
-                        <label className="btn btn-outline-primary" htmlFor="btn-check-8-outlined">Laundry Room</label>
-                      </div>
-                    </div> */}
-
-                    {/* <h4 className="mt-3">Order by</h4>
-                    <div className="mb-3 options">
-                      <input type="radio" className="btn-check" name="order1" id="order-price"/>
-                      <label className="btn btn-outline-primary" htmlFor="order-price">Price</label>
-                      <input type="radio" className="btn-check" name="order1" id="order-rating"/>
-                      <label className="btn btn-outline-primary" htmlFor="order-rating">Rating</label>
-                    </div>
-                    <div id="order-direction" className=" options">
-                      <input type="radio" className="btn-check" name="order2" id="order-asc"/>
-                      <label className="btn btn-outline-primary" htmlFor="order-asc">Highest to Lowest</label>
-                      <input type="radio" className="btn-check" name="order2" id="order-desc"/>
-                      <label className="btn btn-outline-primary" htmlFor="order-desc">Lowest to Highest</label>
-                    </div> */}
-
-                    {/* <Link className="btn btn-blue mt-3" to={searchLink()}>Search</Link> */}
                     <Link className="btn btn-blue mt-3" onClick={searchLink}>Search</Link>
                   </div>
                 </div>

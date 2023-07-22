@@ -1,3 +1,7 @@
+body{
+    background-color:#eee
+}
+
 .commentPage .card-no-border .card {
     border: 0px;
     border-radius: 4px;
@@ -55,6 +59,7 @@
     font-size: 75%;
 }
 
+/* Comment's user profile photo */
 .commentPage .round img {
     border-radius: 100%;
     width: 4rem;
@@ -62,6 +67,7 @@
     
 }
 
+/* Label colours */
 .commentPage .label-info {
     background-color: #1976d2;
 }
@@ -74,6 +80,7 @@
     background-color: #ef5350;
 }
 
+/* Comment icons */
 .commentPage .action-icons a {
     padding-left: 7px;
     vertical-align: middle;
@@ -84,6 +91,7 @@
     color: #1976d2;
 }
 
+/* Comment margins */
 .commentPage.mt-50 {
     margin-top: 50px;
 }
@@ -96,10 +104,7 @@
     margin-top: 20px;
 }
 
-body{
-    background-color:#eee
-}
-
+/* Comment layout */
 .commentPage .card{
     border:none;
     border-radius:8px
@@ -115,7 +120,6 @@ body{
     box-shadow:none;
     border:2px solid red
 }
-
 
 .commentPage .comment-reply {
     background-color: #cecece34;
@@ -144,13 +148,18 @@ body{
     content: '★ ';
 }
 
+/* Selected stars */
 .rate > input:checked ~ label {
     color: #ffc700;
 }
+
+/* When hovering over rating before selection */
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
     color: #deb217;  
 }
+
+/* Selected stars when hovered over */
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,

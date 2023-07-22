@@ -14,7 +14,7 @@ function Home(props) {
 
     async function viewInfo(search){
         var is_valid;
-        var link = 'http://localhost:8000/properties/search/'; ///properties/search/?num_beds=3&num_baths=3&num_guests=3';
+        var link = 'http://localhost:8000/properties/search/';
         link += search;
         console.log(search, link);
         setIsLoading(true);

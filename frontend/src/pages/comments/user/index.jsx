@@ -6,24 +6,25 @@ import CommentCard from "../comment";
 import CommentBox from "../textarea";
 import icons from '../../../components/icons';
 
-// import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js";
-
+// Return comments about a user
 export default function UserComment(props) {
-    const { token } = useContext(UserContext);
-    const { userID, pageNum } = useParams();
-    const [ commentList, setCommentList ] = useState([]);
-    const [ comment, setComment ] = useState([]);
-    const [ total, setTotal ] = useState(1);
-    const [ datacount, setDataCount ] = useState(0);
+    const { token } = useContext(UserContext);            // Log in token of the current user
+    const { userID, pageNum } = useParams();              // Get user ID and page number from the url
+    const [ commentList, setCommentList ] = useState([]); // List of comments in JSON format
+    const [ comment, setComment ] = useState([]);         // List of comments stored as elements for displaying
+    const [ total, setTotal ] = useState(1);              // Number of comments on page
+    const [ datacount, setDataCount ] = useState(0);      // Number of comments about this user
+    const [msg, setMsg] = useState("");                   // Stores Error Message
 
-    const [msg, setMsg] = useState("");
-
+    // Set default page to the first page or to the specified page number
     var pg = 1;
     if (pageNum)
         pg = pageNum;
     
+    // Link to view user's profile
     const link = `/comments/user/${userID}/view/page/`;
 
+    // Get all comments about this user on the specified page number
     async function getComments(){
         var is_valid;
         var code;
@@ -64,10 +65,12 @@ export default function UserComment(props) {
         })
     }
 
+    // Load comments each time the current page changes
     useEffect(() => {
         getComments();
     }, [pg])
 
+    // Update elements on display whenever the list of comments changes
     useEffect(() => {
         if (datacount == 0){
             setComment(<>
@@ -83,17 +86,12 @@ export default function UserComment(props) {
         }
     }, [commentList])
 
+    // Wait for comments to load when page refreshed
     async function handleRefresh() {
-        // console.log(total, datacount);
         await getComments();
-        // if (datacount % 5 == 0){
-        //     pg = parseInt(total) + 1;
-        //     navigate(link + pg);
-        // }
-        // else
-        //     navigate(link + total);
     }
 
+    // Display if current user is not allowed to view this comment page
     const forbidden = (msg) => {
         return <>
             <div className="container height-100 d-flex justify-content-center align-items-center mt-4 mb-4">
@@ -109,6 +107,7 @@ export default function UserComment(props) {
         </>;
     }
 
+    // Display comment list if user is allowed to view
     const allowed = () => {
         return <>
             <CommentPage type="user" content={comment} page={pg} link={link} total={total}/>
@@ -116,9 +115,10 @@ export default function UserComment(props) {
         </>;
     }
 
-    const show_content = (msg) => {
-        if (msg)
-            return forbidden(msg);
+    // Show comment list if there is no error message
+    const show_content = (err_msg) => {
+        if (err_msg)
+            return forbidden(err_msg);
         else
             return allowed();
     }

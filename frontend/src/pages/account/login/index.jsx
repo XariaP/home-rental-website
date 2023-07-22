@@ -6,10 +6,10 @@ import LargeCard from "../../../components/largeCard";
 import UserLogInput from "../../../components/input1";
 
 function Login(props) {
-    const { setPage } = useContext(PageContext);
-    const { setToken } = useContext(UserContext);
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const { setPage } = useContext(PageContext);    // Store current page to display
+    const { setToken } = useContext(UserContext);   // Store current user's token for this session
+    const [email, setEmail] = useState();           // Store user's email
+    const [password, setPassword] = useState();     // Store user's password
     const navigate = useNavigate();
 
     async function loginUser(credentials){
@@ -25,18 +25,23 @@ function Login(props) {
             })
         .then((resquest) => resquest.json())
         .then((data) => {
+            // Display error
             if (data.detail){
                 document.getElementById("error-main").innerText = data.detail;
             }
             else {
                 document.getElementById("error-main").innerText = "";
             }
+
+            // Display error if email incorrect
             if (data.email){
                 document.getElementById("error-email").innerText = data.email;
             }
             else {
                 document.getElementById("error-email").innerText = "";
             }
+            
+            // Display error if password incorrect
             if (data.password){
                 document.getElementById("error-password").innerText = data.password;
             }
@@ -44,6 +49,7 @@ function Login(props) {
                 document.getElementById("error-password").innerText = "";
             }
             
+            // If user authenticated redirect to home page
             if (data.access){
                 const token = data.access;
                 setToken(token);
@@ -53,6 +59,7 @@ function Login(props) {
         });
     }
 
+    // Handle credentials when submited
     const handleSubmit = async e => {
         e.preventDefault();
         const token = await loginUser({
@@ -61,6 +68,7 @@ function Login(props) {
         });
     }
 
+    // Display layout for logging in
     const contents = <>
         <h1 className="fw-light">Welcome Back!</h1>                
         <form onSubmit={handleSubmit}>

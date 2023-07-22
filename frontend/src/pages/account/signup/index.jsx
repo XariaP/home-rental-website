@@ -6,12 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../../contexts";
 
 function Signup(props) {
-    const { setToken } = useContext(UserContext);
-    const [email, setEmail] = useState();
-    const [password1, setPassword1] = useState();
-    const [password2, setPassword2] = useState();
+    const { setToken } = useContext(UserContext);   // Token for new user session
+    const [email, setEmail] = useState();           // Email for new user
+    const [password1, setPassword1] = useState();   // Password for new user 
+    const [password2, setPassword2] = useState();   // Repeat password for confirmation
     const navigate = useNavigate();
 
+    // Create new user with given credentials
     const handleSubmit = async e => {
         e.preventDefault();
         await signupUser({
@@ -23,6 +24,7 @@ function Signup(props) {
         });
     }
 
+    // Send credentials to backend to create new user
     async function signupUser(credentials){
         fetch('http://localhost:8000/accounts/signup/',
             {
@@ -36,16 +38,18 @@ function Signup(props) {
             })
         .then((resquest) => resquest.json())
         .then((data) => {
+            // Initialize error messages to blank ones
             var email_status = "";
             var pass1_status = "";
             var pass2_status = "";
 
+            // If data returns then an error occurred
             if (data.email)
                 email_status = data.email;
-                
             if (data.password2)
                 pass2_status = data.password2;
             
+            // Set error messages
             document.getElementById("error-email").innerHTML = email_status;
             document.getElementById("error-password2").innerHTML = pass2_status;
             document.getElementById("error-password1").innerHTML = pass1_status;
@@ -60,6 +64,7 @@ function Signup(props) {
                 }
             }
 
+            // If user creation was successful, log in user automatically
             if (!email_status && !pass1_status && !pass2_status)
                 loginUser({
                     email: email,
@@ -68,6 +73,8 @@ function Signup(props) {
         });
     }
 
+    /* Log in user with the given credentials by sending them to the backend for validation.
+       Redirect user to the profile editor to input their information */
     async function loginUser(credentials){
         fetch('http://localhost:8000/accounts/login/',
             {
@@ -88,6 +95,7 @@ function Signup(props) {
         })
     }
 
+    // Display layout for sign up page
     const contents = <>
         <h1 className="fw-light">Welcome!</h1>
         <form onSubmit={handleSubmit}>
@@ -102,6 +110,7 @@ function Signup(props) {
             <button className="w-100 btn btn-lg btn-blue" type="submit" href="/accounts/myprofile/edit">Sign up</button>
         </form>
         <br></br>
+        {/* Redirects user to log in page instead */}
         <Link to="/accounts/login">I already have an account</Link>
     </>;
 

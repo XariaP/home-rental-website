@@ -6,21 +6,7 @@ function Logout() {
     const { token, setToken } = useContext(UserContext);
     const [msg, setMsg] = useState("Not logged in");
 
-    async function logoutUser(){
-        await fetch('http://localhost:8000/accounts/logout/',
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'authorization': `Bearer ${token}`,
-                }
-            })
-        .then((resquest) => resquest.json())
-        .then((data) => {
-        })
-    }
-
+    // When page loads, clear token for user session
     useEffect(() => {
         if (token){
             setToken("");
@@ -31,13 +17,7 @@ function Logout() {
         }
     }, []);
 
-    useEffect(() => {
-        // logoutUser();
-        // setMsg("Logout successful!");
-        // navigate("/home");
-    }, [token]);
-
-
+    // Display message on screen for successful or unsuccessful log out
     return <>
         <main className="content">
           <div className="container height-100 d-flex justify-content-center align-items-center mt-4 mb-4">

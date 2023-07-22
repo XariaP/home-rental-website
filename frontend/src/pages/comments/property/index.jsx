@@ -6,22 +6,25 @@ import CommentBox from "../textarea";
 import CommentPage from "../layout";
 import icons from '../../../components/icons';
 
+// Return comments about a property
 export default function PropertyComment(props) {
-    const { token } = useContext(UserContext);
-    const { propertyID, pageNum } = useParams();
-    const [ commentList, setCommentList ] = useState(null);
-    const [ comment, setComment ] = useState([]);
-    const [ total, setTotal ] = useState(1);
-    const [ datacount, setDataCount ] = useState(0);
+    const { token } = useContext(UserContext);              // Log in token of the current user
+    const { propertyID, pageNum } = useParams();            // Get property ID and page number from the url
+    const [ commentList, setCommentList ] = useState(null); // List of comments in JSON format
+    const [ comment, setComment ] = useState([]);           // List of comments stored as elements for displaying
+    const [ total, setTotal ] = useState(1);                // Number of comments on this page
+    const [ datacount, setDataCount ] = useState(0);        // Number of comments about this property
+    const [msg, setMsg] = useState("");                     // Stores Error Message
 
-    const [msg, setMsg] = useState("");
-
+    // Set default page to the first page or to the specified page number
     var pg = 1;
     if (pageNum)
         pg = pageNum;
 
+    // Link to view property information
     const link = `/comments/property/${propertyID}/view/page/`;
 
+    // Get all comments about this property on the specified page number
     async function getComments(){
         var is_valid;
         var code;
@@ -62,10 +65,12 @@ export default function PropertyComment(props) {
         })
     }
 
+    // Load comments each time the current page changes
     useEffect(() => {
         getComments();
     }, [pg])
 
+    // Update elements on display whenever the list of comments changes
     useEffect(() => {
         if (!commentList)
             setComment(<></>);
@@ -83,10 +88,12 @@ export default function PropertyComment(props) {
         }
     }, [commentList])
 
+    // Wait for comments to load when page refreshed
     async function handleRefresh() {
         await getComments();
     }
 
+    // Display message if current user is not allowed to view this comment page
     const forbidden = (msg) => {
         return <>
             <div className="container height-100 d-flex justify-content-center align-items-center mt-4 mb-4">
@@ -102,6 +109,7 @@ export default function PropertyComment(props) {
         </>;
     }
 
+    // Display comment list if user is allowed to view
     const allowed = () => {
         return <>
             <CommentPage type="property" content={comment} page={pg} link={link} total={total}/>
@@ -109,9 +117,10 @@ export default function PropertyComment(props) {
         </>;
     }
 
-    const show_content = (msg) => {
-        if (msg)
-            return forbidden(msg);
+    // Show comment list if there is no error message
+    const show_content = (err_msg) => {
+        if (err_msg)
+            return forbidden(err_msg);
         else
             return allowed();
     }

@@ -4,17 +4,20 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import "../style.css"
 import Pagination from "../../../components/pagination";
 
+// Displays all comments associated with a certain renter/property
 export default function CommentPage({type, content, page, link, total}) {
-    const { token } = useContext(UserContext);
-    const { userID, propertyID } = useParams();
-    const [fname, setFname] = useState();
-    const [lname, setLname] = useState();
-    const [pname, setPname] = useState();
-    const [host, setHost] = useState(null);
-    const [myID, setMyID] = useState(null);
+    const { token } = useContext(UserContext);      // Log in token of the current user
+    const { userID, propertyID } = useParams();     // ID of the user or property which the comments are about
+    const [fname, setFname] = useState();           // First name of the user the comments are about
+    const [lname, setLname] = useState();           // Last name of the user the comments are about
+    const [pname, setPname] = useState();           // Name of the property the comments are about
+    const [host, setHost] = useState(null);         // Host of the property the comments are about
+    const [myID, setMyID] = useState(null);         // ID of the currently logged in user
 
+    // Page navigation
     const navigate = useNavigate();
 
+    // Retrieve information about the user the comments are about
     async function getUser(){
         fetch(`http://localhost:8000/accounts/profile/${userID}/view/renter/`,
             {
@@ -34,6 +37,7 @@ export default function CommentPage({type, content, page, link, total}) {
         })
     }
 
+    // Retrieve information about the property the comments are about
     async function getProperty(){
         fetch(`http://localhost:8000/properties/${propertyID}/details/`,
             {
@@ -53,6 +57,7 @@ export default function CommentPage({type, content, page, link, total}) {
         })
     }
 
+    // Retrieve information about the user currently logged in
     async function viewUser(){
         fetch('http://localhost:8000/accounts/myprofile/view/',
             {
@@ -71,6 +76,7 @@ export default function CommentPage({type, content, page, link, total}) {
         })
     }
 
+    // Retrieve information about users and property once the page loads
     useEffect(() => {
         if (type === "user")
             getUser();
@@ -80,6 +86,7 @@ export default function CommentPage({type, content, page, link, total}) {
         }
     },[])
     
+    // Return url to the page of the user or property the comments are about
     const link2 = () => {
         if (type === "user")
             return "/accounts/profile/" + userID + "/view/renter";
@@ -91,6 +98,7 @@ export default function CommentPage({type, content, page, link, total}) {
         }
     }
 
+    // Return full name of the user as a string
     const getName = () => {
         if (type === "user")
             return fname + " " + lname;
@@ -98,8 +106,8 @@ export default function CommentPage({type, content, page, link, total}) {
             return pname;
     }
 
+    // Displays the full layout of the comment board
     return <>
-
         <button
             className="btn text-bg-primary"
             onClick={() => navigate(-1)} style={{position:"fixed", marginLeft:"5px", zIndex:"100"}}>
