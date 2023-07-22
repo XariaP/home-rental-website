@@ -7,7 +7,7 @@ import ViewProfile from './pages/account/profile/view/other';
 import Login from './pages/account/login';
 import Signup from './pages/account/signup';
 import Logout from './pages/account/logout';
-import { PageContext, UserContext } from './contexts';
+import { PageContext, UserContext, useSearchContext, SearchContext } from './contexts';
 import EditProfile from './pages/account/profile/edit';
 import ViewMyProfile from './pages/account/profile/view/mine';
 import PropertyComment from './pages/comments/property';
@@ -33,11 +33,14 @@ function App() {
   return (
     <PageContext.Provider value={{page, setPage}}>
     <UserContext.Provider value={{token, setToken}}>
+    <SearchContext.Provider value={useSearchContext()}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<NavBar />}>
           <Route index element={<Home />} />
-          <Route path="home" element={<Home />} />
+
+          
+            <Route path="home" element={<Home />} />
           
           <Route path="reserve/property/" >
             <Route path=":propertyID" element={<Book />}/>
@@ -88,6 +91,7 @@ function App() {
 
       </Routes>
     </BrowserRouter>
+    </SearchContext.Provider>
     </UserContext.Provider>
     </PageContext.Provider>
   );

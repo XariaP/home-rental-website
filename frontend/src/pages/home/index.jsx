@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import PropertyCard from "../property/card";
 import "./style.css";
 import SearchBar from "../../components/searchbar";
+import { SearchContext } from "../../contexts";
 
 
 function Home(props) {
@@ -9,11 +10,16 @@ function Home(props) {
     const [ count, setCount ] = useState(0);
     const [nextPage, setNextPage] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const {beds, baths, guests, search, setBeds, setBaths, setGuests, setSearch} = useContext(SearchContext);
 
-    async function viewInfo(){
+    async function viewInfo(search){
         var is_valid;
+        var link = 'http://localhost:8000/properties/search/'; ///properties/search/?num_beds=3&num_baths=3&num_guests=3';
+        link += search;
+        console.log(search, link);
         setIsLoading(true);
-        fetch('http://localhost:8000/properties/search/',
+
+        fetch(link,
             {
                 method: 'GET',
                 headers: {
@@ -27,6 +33,7 @@ function Home(props) {
         })
         .then((data) => {
             setProperties(data.results);
+            console.log(properties);
             setCount(data.count);
             setNextPage(data.next);
         });
@@ -34,8 +41,13 @@ function Home(props) {
     }
 
     useEffect(() => {
-        viewInfo();
+        viewInfo("");
     }, []);
+
+    useEffect(() => {
+        console.log("hhihi");
+        viewInfo(search);
+    }, [search]);
 
     const handleLoadMore = async () => {
         if (!nextPage || isLoading) {

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 // import LargeCard from "../../components/largeCard";
-import { UserContext } from "../../contexts";
+import { UserContext, SearchContext } from "../../contexts";
 import "./style.css";
 import { Link } from "react-router-dom";
 
@@ -8,14 +8,41 @@ import { Link } from "react-router-dom";
 export default function SearchBar({numresults}) {
     const { token } = useContext(UserContext);
     const [ properties, setProperties ] = useState([]);
+    // const [ beds, setBeds ] = useState(0);
+    // const [ baths, setBaths ] = useState(0);
+    // const [ guests, setGuests ] = useState(0);
+    const {beds, baths, guests, search, setBeds, setBaths, setGuests, setSearch} = useContext(SearchContext);
+    // console.log(useContext(SearchContext));
 
-    const beds = 0;
-    const baths = 0;
-    const max = 0;
+    // var beds = 0;
+    // var baths = 0;
+    // var max = 0;
 
     const searchLink = () => {
-        return `/properties/search?num_beds=${beds}&num_baths=${baths}&num_guests=${max}`;
+      var link = `?`;
+      if (beds > 0)
+        link += `num_beds=${beds}&`;
+      if (baths > 0)
+        link += `num_baths=${baths}&`;
+      if (guests > 0)
+        link += `num_guests=${guests}`;
+      setSearch(link);
+
+      document.getElementById('filter-button').click();
+      return link;
     }
+
+    function handleBedsChange(e) {
+      setBeds(e.target.value);
+    }
+    function handleBathsChange(e) {
+      setBaths(e.target.value);
+    }
+    function handleGuestsChange(e) {
+      setGuests(e.target.value);
+    }
+
+
 
     return <>
         <section className="py-5 text-center container">
@@ -23,7 +50,7 @@ export default function SearchBar({numresults}) {
             <div className="col-lg-6 col-md-8 mx-auto">
               <h1 className="fw-light">Rental Search</h1>
               <p>
-                <a className="btn btn-primary my-2" data-bs-toggle="collapse" href="#filterForm" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a id="filter-button" className="btn btn-primary my-2" data-bs-toggle="collapse" href="#filterForm" role="button" aria-expanded="false" aria-controls="collapseExample">
                   Filter/Sort
                 </a>
               </p>
@@ -43,44 +70,44 @@ export default function SearchBar({numresults}) {
                     </div> */}
 
                     <label htmlFor="numguests" className="form-label filter-label mt-3">Number of Guests</label>
-                    <div className="mb-3">
-                      <input type="radio" className="btn-check" name="numguests" id="guest0" defaultChecked/>
+                    <div className="mb-3 options" onChange={handleGuestsChange}>
+                      <input type="radio" className="btn-check" name="numguests" id="guest0" value="0" defaultChecked/>
                       <label className="btn btn-outline-primary" htmlFor="guest0">Any</label>
-                      <input type="radio" className="btn-check" name="numguests" id="guest1"/>
+                      <input type="radio" className="btn-check" name="numguests" id="guest1" value="1"/>
                       <label className="btn btn-outline-primary" htmlFor="guest1">1</label>
-                      <input type="radio" className="btn-check" name="numguests" id="guest2"/>
+                      <input type="radio" className="btn-check" name="numguests" id="guest2" value="2"/>
                       <label className="btn btn-outline-primary" htmlFor="guest2">2</label>
-                      <input type="radio" className="btn-check" name="numguests" id="guest3"/>
+                      <input type="radio" className="btn-check" name="numguests" id="guest3" value="3"/>
                       <label className="btn btn-outline-primary" htmlFor="guest3">3</label>
-                      <input type="radio" className="btn-check" name="numguests" id="guest4"/>
+                      <input type="radio" className="btn-check" name="numguests" id="guest4" value="4"/>
                       <label className="btn btn-outline-primary" htmlFor="guest4">4+</label>
                     </div>
 
                     <label htmlFor="numbeds" className="form-label filter-label mt-3">Number of Beds</label>
-                    <div className="mb-3">
-                      <input type="radio" className="btn-check" name="numbeds" id="bed0" defaultChecked/>
+                    <div className="mb-3 options" onChange={handleBedsChange}>
+                      <input type="radio" className="btn-check" name="numbeds" id="bed0" value="0" defaultChecked/>
                       <label className="btn btn-outline-primary" htmlFor="bed0">Any</label>
-                      <input type="radio" className="btn-check" name="numbeds" id="bed1"/>
+                      <input type="radio" className="btn-check" name="numbeds" id="bed1" value="1"/>
                       <label className="btn btn-outline-primary" htmlFor="bed1">1</label>
-                      <input type="radio" className="btn-check" name="numbeds" id="bed2"/>
+                      <input type="radio" className="btn-check" name="numbeds" id="bed2" value="2"/>
                       <label className="btn btn-outline-primary" htmlFor="bed2">2</label>
-                      <input type="radio" className="btn-check" name="numbeds" id="bed3"/>
+                      <input type="radio" className="btn-check" name="numbeds" id="bed3" value="3"/>
                       <label className="btn btn-outline-primary" htmlFor="bed3">3</label>
-                      <input type="radio" className="btn-check" name="numbeds" id="bed4"/>
+                      <input type="radio" className="btn-check" name="numbeds" id="bed4" value="4"/>
                       <label className="btn btn-outline-primary" htmlFor="bed4">4+</label>
                     </div>
 
                     <label htmlFor="numbaths" className="form-label filter-label mt-3">Number of Baths</label>
-                    <div className="mb-3">
-                      <input type="radio" className="btn-check" name="numbaths" id="bath0" defaultChecked/>
+                    <div className="mb-3 options" onChange={handleBathsChange}>
+                      <input type="radio" className="btn-check" name="numbaths" id="bath0" value="0" defaultChecked/>
                       <label className="btn btn-outline-primary" htmlFor="bath0">Any</label>
-                      <input type="radio" className="btn-check" name="numbaths" id="bath1"/>
+                      <input type="radio" className="btn-check" name="numbaths" id="bath1" value="1"/>
                       <label className="btn btn-outline-primary" htmlFor="bath1">1</label>
-                      <input type="radio" className="btn-check" name="numbaths" id="bath2"/>
+                      <input type="radio" className="btn-check" name="numbaths" id="bath2" value="2"/>
                       <label className="btn btn-outline-primary" htmlFor="bath2">2</label>
-                      <input type="radio" className="btn-check" name="numbaths" id="bath3"/>
+                      <input type="radio" className="btn-check" name="numbaths" id="bath3" value="3"/>
                       <label className="btn btn-outline-primary" htmlFor="bath3">3</label>
-                      <input type="radio" className="btn-check" name="numbaths" id="bath4"/>
+                      <input type="radio" className="btn-check" name="numbaths" id="bath4" value="4"/>
                       <label className="btn btn-outline-primary" htmlFor="bath4">4+</label>
                     </div>
 
@@ -120,21 +147,22 @@ export default function SearchBar({numresults}) {
                       </div>
                     </div> */}
 
-                    <h4 className="mt-3">Order by</h4>
-                    <div className="mb-3">
+                    {/* <h4 className="mt-3">Order by</h4>
+                    <div className="mb-3 options">
                       <input type="radio" className="btn-check" name="order1" id="order-price"/>
                       <label className="btn btn-outline-primary" htmlFor="order-price">Price</label>
                       <input type="radio" className="btn-check" name="order1" id="order-rating"/>
                       <label className="btn btn-outline-primary" htmlFor="order-rating">Rating</label>
                     </div>
-                    <div id="order-direction">
+                    <div id="order-direction" className=" options">
                       <input type="radio" className="btn-check" name="order2" id="order-asc"/>
                       <label className="btn btn-outline-primary" htmlFor="order-asc">Highest to Lowest</label>
                       <input type="radio" className="btn-check" name="order2" id="order-desc"/>
                       <label className="btn btn-outline-primary" htmlFor="order-desc">Lowest to Highest</label>
-                    </div>
+                    </div> */}
 
-                    <Link className="btn btn-blue mt-3" to={searchLink()}>Search</Link>
+                    {/* <Link className="btn btn-blue mt-3" to={searchLink()}>Search</Link> */}
+                    <Link className="btn btn-blue mt-3" onClick={searchLink}>Search</Link>
                   </div>
                 </div>
               </form>

@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 export const PageContext = createContext({
     page: "home",
@@ -10,14 +10,21 @@ export const UserContext = createContext({
     setToken: () => {},
 });
 
-// export function useAPIContext() {
-//     const [page, setPage] = useState("home");
-//     const [token, setToken] = useState();
-//     const [user, setUser] = useState(null);
+export const SearchContext = createContext({
+    value: "",
+    setValue: () => {}
+})
 
-//     return {
-//         page, setPage,
-//         token, setToken,
-//         user, setUser,
-//     }
-// }
+export function useSearchContext() {
+    const [ beds, setBeds ] = useState(0);
+    const [ baths, setBaths ] = useState(0);
+    const [ guests, setGuests ] = useState(0);
+    const [ search, setSearch ] = useState("");
+
+    return {
+        beds, setBeds,
+        baths, setBaths,
+        guests, setGuests,
+        search, setSearch
+    }
+}

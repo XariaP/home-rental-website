@@ -73,6 +73,7 @@ class PropertySearch(ListAPIView):
         location = params.get('location', None)
         amenities = params.get('amenities', None)
         num_beds = params.get('num_beds', None)
+        num_baths = params.get('num_baths', None)
         order_by_1 = params.get('order_by_1', None)
         order_by_2 = params.get('order_by_2', None)
         query_set = Property.objects.all()
@@ -83,7 +84,15 @@ class PropertySearch(ListAPIView):
         if amenities:
             query_set = query_set.filter(amenities__icontains=amenities)
         if num_beds:
-            query_set = query_set.filter(num_beds__gte=num_beds)
+            if num_beds == 4:
+                query_set = query_set.filter(num_beds__gte=num_beds)
+            else:
+                query_set = query_set.filter(num_beds=num_beds)
+        if num_baths:
+            if num_baths == 4:
+                query_set = query_set.filter(num_baths__gte=num_baths)
+            else:
+                query_set = query_set.filter(num_baths=num_baths)
         if order_by_1:
             query_set = query_set.order_by(order_by_1)
         if order_by_2:
