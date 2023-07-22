@@ -15,8 +15,8 @@ pip3 install django-cors-headers
 pip3 install pillow
 
 # Run migrations
-./manage.py makemigrations
-./manage.py migrate
+python3 manage.py makemigrations
+python3 manage.py migrate
 
 # Setup Frontend
 cd ../frontend
