@@ -38,9 +38,8 @@ function App() {
       <Routes>
         <Route path="/" element={<NavBar />}>
           <Route index element={<Home />} />
-
           
-            <Route path="home" element={<Home />} />
+          <Route path="home" element={<Home />} />
           
           <Route path="reserve/property/" >
             <Route path=":propertyID" element={<Book />}/>
