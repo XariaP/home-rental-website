@@ -3,13 +3,15 @@ import ProfileInput from "../../../../../components/input2";
 import FormButton from "../../../../../components/submit2";
 import { UserContext } from "../../../../../contexts";
 
+// Displays inputs for changing general user information
 export default function EditGeneralUserInfo(props) {
-    const { token } = useContext(UserContext);
+    const { token } = useContext(UserContext);      // Stores token for current user session
     const [fname, setFname] = useState();
     const [lname, setLname] = useState();
     const [email, setEmail] = useState();
     const [phonenum, setPhonenum] = useState();
 
+    // Retrieve previous user information to prefill input boxes
     async function viewInfo(){
         var is_valid;
         fetch('http://localhost:8000/accounts/myprofile/edit/',
@@ -33,10 +35,12 @@ export default function EditGeneralUserInfo(props) {
         })
     }
 
+    // Retrieve information when page loads
     useEffect(() => {
         viewInfo();
     }, [])
 
+    // Update user information with the changes made in the input boxes
     async function editInfo(updates){
         var is_valid;
         fetch('http://localhost:8000/accounts/myprofile/edit/',
@@ -59,16 +63,19 @@ export default function EditGeneralUserInfo(props) {
             var phoneNum_status = "";
             var main_status = "";
 
+            // Variables to hold elements which will display any error messages
             var err_email = document.getElementById("error-email");
             var err_phoneNum = document.getElementById("error-phonenum");
             var status = document.getElementById("status");
-                
+               
+            // Request successful
             if (is_valid){
                 main_status = "Profile updated successfully"; 
                 if (!fname || !lname || !email || !phonenum)
                     viewInfo();
             }
             else {
+                // Collect error messages from response
                 if (data.email)
                     email_status = data.email;
 
@@ -77,17 +84,17 @@ export default function EditGeneralUserInfo(props) {
                 }
             }
 
+            // Output error messages
             err_email.innerHTML = email_status;
             err_phoneNum.innerHTML = phoneNum_status;
             status.innerHTML = main_status;
         });
     }
 
+    // Saves the changes made in the input boxes and updates the user information accordingly unless field was left blank
     const handleSubmit = async e => {
         e.preventDefault();
-
         var updates = {};
-        
         if (fname)
             updates['first_name'] = fname;
         if (lname)
@@ -100,6 +107,7 @@ export default function EditGeneralUserInfo(props) {
         await editInfo(updates);
     }
 
+    // Automatically update variables to reflect each change the user makes in real-time
     const handleChange = (e, type) => {
         if (type === "fname")
             setFname(e.target.value);
@@ -109,9 +117,11 @@ export default function EditGeneralUserInfo(props) {
             setEmail(e.target.value);
         else if (type === "phonenum")
             setPhonenum(e.target.value);
+        // Clear display message when a change is made
         document.getElementById("status").innerHTML = "";
     }
 
+    // Displays the layout for the general section of the settings page
     return <>
         <div className="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabIndex="0">
             <form className="row g-3 mt-1" onSubmit={handleSubmit}>

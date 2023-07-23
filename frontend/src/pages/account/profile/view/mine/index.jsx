@@ -3,17 +3,18 @@ import "../style.css";
 import { PageContext, UserContext } from "../../../../../contexts";
 import { Link } from "react-router-dom";
 
+// Displays the current user's own profile
 function ViewMyProfile(props) {
-    const { token } = useContext(UserContext);
+    const { token } = useContext(UserContext);      // Stores token for current user session
     const { setPage } = useContext(PageContext);
     const [pic, setPic] = useState(null);
     const [fname, setFname] = useState();
     const [lname, setLname] = useState();
     const [email, setEmail] = useState();
     const [phonenum, setPhonenum] = useState();
+    const [msg, setMsg] = useState(null);           // Stores confirmation or error messages to be displayed
 
-    const [msg, setMsg] = useState(null);
-
+    // Retrieve user's information to fill page contents
     async function viewInfo(){
         var is_valid;
         var code;
@@ -32,51 +33,57 @@ function ViewMyProfile(props) {
             return request.json();
         })
         .then((data) => {
-            // console.log(data);
             setPic(data.avatar);
             setFname(data.first_name);
             setLname(data.last_name);
             setEmail(data.email)
             setPhonenum(data.phone_number);
-
+            
+            // Set error message
             if (code == 401){
                 setMsg("You are not logged in");
             }
         })
     }
 
+    // Retrieve information as soon as the page is loaded
     useEffect(() => {
         viewInfo();
         setPage("profile");
     }, [])
 
+    // Initialize link to send an email directly to the user
     const email_link = "mailto:" + email;
 
+    // Specifies the user type of the profile being displayed ("You", "Renter", "Host")
     const type = () => {
         return "You";
     }
 
+    // Return the phone number of the user
     const getPhoneNum = () => {
         if (phonenum)
             return " / " + phonenum;
     }
 
+    // Display error message if any
     if (msg)
         return <>
-        <main className="profile content">
-            <div className="container height-100 d-flex justify-content-center align-items-center mt-4 mb-4">
-                <div className="card text-center">
-                    <div className="row py-5 px-5">
-                        <div className="mx-auto">
-                            {/* <img className="mb-4" src={icons["logo"]} alt="" height="90" /> */}
-                            <h3 className="fw-light">{msg}</h3>
+            <main className="profile content">
+                <div className="container height-100 d-flex justify-content-center align-items-center mt-4 mb-4">
+                    <div className="card text-center">
+                        <div className="row py-5 px-5">
+                            <div className="mx-auto">
+                                {/* <img className="mb-4" src={icons["logo"]} alt="" height="90" /> */}
+                                <h3 className="fw-light">{msg}</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-    </>;
+            </main>
+        </>;
     
+    // Display layout for user profile
     return <>
         <main className="profile content">
             <div className="container height-100 d-flex justify-content-center align-items-center mt-4 mb-4">

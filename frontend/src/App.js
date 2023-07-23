@@ -34,62 +34,61 @@ function App() {
     <PageContext.Provider value={{page, setPage}}>
     <UserContext.Provider value={{token, setToken}}>
     <SearchContext.Provider value={useSearchContext()}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<NavBar />}>
-          <Route index element={<Home />} />
-          
-          <Route path="home" element={<Home />} />
-          
-          <Route path="reserve/property/" >
-            <Route path=":propertyID" element={<Book />}/>
-            <Route path=":propertyID/popup" element={<BookingPopup />}/>
-          </Route>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<NavBar />}>
+            <Route index element={<Home />} />
+            
+            <Route path="home" element={<Home />} />
+            
+            <Route path="reserve/property/" >
+              <Route path=":propertyID" element={<Book />}/>
+              <Route path=":propertyID/popup" element={<BookingPopup />}/>
+            </Route>
 
-          <Route path="reservations/" element={<Reservations />}>
-            <Route path="create" />
-            <Route path=":reservationID/cancel" />
-          </Route>
-          
-          <Route path="requests/" element={<Request />}>
-            <Route path=":reservationID/approve" />
-            <Route path=":reservationID/deny" />
-            <Route path=":reservationID/approve_cancel" />
-            <Route path=":reservationID/deny_cancel" />
-            <Route path=":reservationID/terminate" />
-          </Route> 
+            <Route path="reservations/" element={<Reservations />}>
+              <Route path="create" />
+              <Route path=":reservationID/cancel" />
+            </Route>
+            
+            <Route path="requests/" element={<Request />}>
+              <Route path=":reservationID/approve" />
+              <Route path=":reservationID/deny" />
+              <Route path=":reservationID/approve_cancel" />
+              <Route path=":reservationID/deny_cancel" />
+              <Route path=":reservationID/terminate" />
+            </Route> 
 
-          <Route path="notifications/">
-            <Route path=":pk/read" />
-          </Route>
-          
-          <Route path="accounts/">
-            <Route path="signup" element={<Signup />} />
-            <Route path="login" element={<Login />} />
-            <Route path="logout" element={<Logout />} />
-            <Route path="myprofile/view" element={<ViewMyProfile />} />
-            <Route path="myprofile/edit"  element={<EditProfile />} />
-            <Route path="profile/:userID/view/:userType" element={<ViewProfile />} />
-          </Route>
+            <Route path="notifications/">
+              <Route path=":pk/read" />
+            </Route>
+            
+            <Route path="accounts/">
+              <Route path="signup" element={<Signup />} />
+              <Route path="login" element={<Login />} />
+              <Route path="logout" element={<Logout />} />
+              <Route path="myprofile/view" element={<ViewMyProfile />} />
+              <Route path="myprofile/edit"  element={<EditProfile />} />
+              <Route path="profile/:userID/view/:userType" element={<ViewProfile />} />
+            </Route>
 
-          <Route path="comments/">
-          <Route path="user/:userID/view" element={<UserComment />} />
-          <Route path="user/:userID/view/page/:pageNum" element={<UserComment />} />
-            <Route path="property/:propertyID/view" element={<PropertyComment />} />
-            <Route path="property/:propertyID/view/page/:pageNum" element={<PropertyComment />} />
+            <Route path="comments/">
+            <Route path="user/:userID/view" element={<UserComment />} />
+            <Route path="user/:userID/view/page/:pageNum" element={<UserComment />} />
+              <Route path="property/:propertyID/view" element={<PropertyComment />} />
+              <Route path="property/:propertyID/view/page/:pageNum" element={<PropertyComment />} />
+            </Route>
+            
+            <Route path="properties/">
+              <Route path="add" element={<EditProperty />}/>
+              <Route path=":propertyID/update" element={<EditProperty />}/>
+              <Route path=":propertyID/details" element={<Property />}/>
+              <Route path="manage" element={<MyProperty />}/>
+              <Route path="search" element={<Home />} />
+            </Route>
           </Route>
-          
-          <Route path="properties/">
-            <Route path="add" element={<EditProperty />}/>
-            <Route path=":propertyID/update" element={<EditProperty />}/>
-            <Route path=":propertyID/details" element={<Property />}/>
-            <Route path="manage" element={<MyProperty />}/>
-            <Route path="search" element={<Home />} />
-          </Route>
-        </Route>
-
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
     </SearchContext.Provider>
     </UserContext.Provider>
     </PageContext.Provider>
