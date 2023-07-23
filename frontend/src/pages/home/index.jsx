@@ -93,11 +93,10 @@ function Home(props) {
             return <>
                 {properties.map(rental => {
                     return <PropertyCard key={rental.id} rental={rental}/>;
-                    })}
-                
+                })}
             </>;
         else
-        return <></>;
+            return <></>;
     } 
 
     // Displays the filters to narrow down the results
@@ -114,11 +113,12 @@ function Home(props) {
             <div className="album py-5 bg-light">
                 <div className="container mb-3">
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    {contents()}
+                        {contents()}
                     </div>
                 </div>
             </div>
         </main>
+        
         <footer>
             {isLoading && <p>Loading...</p>}
             {nextPage && (

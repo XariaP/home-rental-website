@@ -17,7 +17,7 @@ export default function CommentPage({type, content, page, link, total}) {
     // Page navigation
     const navigate = useNavigate();
 
-    // Retrieve information about the user the comments are about
+    // Retrieves information about the user that the comments are about
     async function getUser(){
         fetch(`http://localhost:8000/accounts/profile/${userID}/view/renter/`,
             {
@@ -37,7 +37,7 @@ export default function CommentPage({type, content, page, link, total}) {
         })
     }
 
-    // Retrieve information about the property the comments are about
+    // Retrieve information about the property that the comments are about
     async function getProperty(){
         fetch(`http://localhost:8000/properties/${propertyID}/details/`,
             {

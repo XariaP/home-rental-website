@@ -44,7 +44,7 @@ export default function ReplyBox({commentID, refresh}) {
                 msg = data.content;
             // Forbidden error
             else if (code == 403){
-                msg = msg = "You are not allowed to reply this comment.";
+                msg = "Only the host can reply to this comment.";
             }
             // Set error message to be displayed if any
             document.getElementById(errorID).innerHTML = msg;
