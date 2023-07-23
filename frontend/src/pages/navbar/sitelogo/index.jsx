@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 
+// Display logo and site title on navigation bar
 function SiteLogo({ homeLink, icon, sitename, onClick }) {
     return <>
         <Link to={ homeLink } className="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none" onClick={onClick}>

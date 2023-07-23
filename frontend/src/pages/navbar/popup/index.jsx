@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 
+// Display popup for notifications on navigation bar
 function NavBarPopUp({ icon, name, selected, num_notices }) {
     return <>
         <li>

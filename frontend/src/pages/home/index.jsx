@@ -4,19 +4,19 @@ import "./style.css";
 import SearchBar from "../../components/searchbar";
 import { SearchContext } from "../../contexts";
 
-
+// Displays home page for website
 function Home(props) {
-    const [ properties, setProperties ] = useState([]);
-    const [ count, setCount ] = useState(0);
-    const [nextPage, setNextPage] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const {beds, baths, guests, search, setBeds, setBaths, setGuests, setSearch} = useContext(SearchContext);
+    const [ properties, setProperties ] = useState([]);     // List of properties available for rent
+    const [ count, setCount ] = useState(0);                // Number of properties that show up in the results
+    const [nextPage, setNextPage] = useState(null);         // Link to the next result page
+    const [isLoading, setIsLoading] = useState(false);      // Tracks whether page has loaded completely
+    const {beds, baths, guests, search, setBeds, setBaths, setGuests, setSearch} = useContext(SearchContext);   // Filter values for search results
 
+    // Retrieve property information for properties that match the search criteria
     async function viewInfo(search){
         var is_valid;
         var link = 'http://localhost:8000/properties/search/';
         link += search;
-        console.log(search, link);
         setIsLoading(true);
 
         fetch(link,
@@ -40,15 +40,17 @@ function Home(props) {
         setIsLoading(false);
     }
 
+    // Display information when page loads
     useEffect(() => {
         viewInfo("");
     }, []);
 
+    // Display new search results when filters updated
     useEffect(() => {
-        console.log("hhihi");
         viewInfo(search);
     }, [search]);
 
+    // Load more search results
     const handleLoadMore = async () => {
         if (!nextPage || isLoading) {
           return;
@@ -85,6 +87,7 @@ function Home(props) {
         })
     }
     
+    // Displays a card for each property in the list
     const contents = () => {
         if (properties)
             return <>
@@ -97,11 +100,12 @@ function Home(props) {
         return <></>;
     } 
 
+    // Displays the filters to narrow down the results
     const searchbar = () => {
         return <SearchBar numresults={count}/>;
     }
 
-
+    // Display home page layout
     return <div>
         <main className="search content">
 
@@ -119,7 +123,7 @@ function Home(props) {
             {isLoading && <p>Loading...</p>}
             {nextPage && (
                 <button type="button" className="btn btn-secondary" onClick={handleLoadMore} disabled={isLoading}>
-                Load More
+                    Load More
                 </button>
             )}
         </footer>

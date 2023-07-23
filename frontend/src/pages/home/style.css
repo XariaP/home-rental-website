@@ -1,4 +1,5 @@
 @import "../../assets/bootstrap.min.css";
+
 /* Cards */
 .search .text-bg-darkblue {
   color:#fff!important;
@@ -46,8 +47,6 @@
   width: 500px;
   width: 50vw;
   min-width: 300px;
-  /* max-width: 50vw; */
-  /* display: flex; */
   align-self: center;
 }
 
