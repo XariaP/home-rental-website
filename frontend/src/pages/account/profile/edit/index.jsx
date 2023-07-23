@@ -6,17 +6,13 @@ import EditAvatar from "./photo";
 import { PageContext, UserContext } from "../../../../contexts";
 
 function EditProfile(props) {
-    const { token } = useContext(UserContext);      // Stores token for current user session
-    const { setPage } = useContext(PageContext);    // Sets the current page being viewed
-    const [pic, setPic] = useState(null);
-    const [fname, setFname] = useState();
-    const [lname, setLname] = useState();
-    const [email, setEmail] = useState();
-    const [phonenum, setPhonenum] = useState();
+    const { token } = useContext(UserContext);   // Stores token for current user session
+    const { setPage } = useContext(PageContext); // Sets the current page being viewed
+    const [pic, setPic] = useState(null);        // User's profile photo
+    const [msg, setMsg] = useState(null);        // Stores any confirmation or error messages
 
-    const [msg, setMsg] = useState(null);       // Stores any confirmation or error messages
-
-    // Fetch the current user's profile information
+    /* Checks whether the user is logged in before displaying the settings page.
+       Retrieves the user's profile photo. */
     async function viewInfo(){
         var is_valid;
         var code;
@@ -37,10 +33,6 @@ function EditProfile(props) {
         })
         .then((data) => {
             setPic(data.avatar);
-            setFname(data.first_name);
-            setLname(data.last_name);
-            setEmail(data.email);
-            setPhonenum(data.phone_number);
             
             if (code == 401){
                 setMsg("You are not logged in");
@@ -66,7 +58,7 @@ function EditProfile(props) {
         </div>
     </>;
 
-    // Side menu for switching the current section of the settings page
+    // Displays the side menu for switching the current section of the settings page
     const tabs = <>
         <div className="d-flex justify-content-center mt-3">
             <div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -78,7 +70,7 @@ function EditProfile(props) {
         </div>
     </>;
 
-    // Display error message if any problems occur, e.g. forbidden page, user not logged in
+    // Displays an error message if any problems occur, e.g. forbidden page, user not logged in
     if (msg)
         return <>
             <main className="profile content">
@@ -94,7 +86,7 @@ function EditProfile(props) {
             </main>
         </>;
 
-    // Display layout for settings page
+    // Displays entire layout for settings page
     return <>
         <main className="content whitebg">
             <div className="profile">
