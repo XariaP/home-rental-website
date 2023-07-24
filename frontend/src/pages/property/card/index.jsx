@@ -3,7 +3,6 @@ import { UserContext } from "../../../contexts";
 import { Link } from "react-router-dom";
 import house from "../../../assets/imgs/rental-placeholder.png";
 
-
 export default function PropertyCard({rental}) {
     const { token } = useContext(UserContext);
     const [ beds, setBeds ] = useState(0);
@@ -20,7 +19,6 @@ export default function PropertyCard({rental}) {
     const host = rental.host;
     const ID = rental.id;
     
-
     async function viewInfo(){
         var is_valid;
         fetch(`http://localhost:8000/properties/${ID}/details/`,

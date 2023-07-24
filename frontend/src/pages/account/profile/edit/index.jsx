@@ -14,7 +14,6 @@ function EditProfile(props) {
     /* Checks whether the user is logged in before displaying the settings page.
        Retrieves the user's profile photo. */
     async function viewInfo(){
-        var is_valid;
         var code;
 
         fetch('http://localhost:8000/accounts/myprofile/edit/',
@@ -27,7 +26,6 @@ function EditProfile(props) {
                 },
             })
         .then((request) => {
-            is_valid = request.ok;
             code = request.status;
             return request.json();
         })
@@ -71,7 +69,7 @@ function EditProfile(props) {
     </>;
 
     // Displays an error message if any problems occur, e.g. forbidden page, user not logged in
-    if (msg)
+    if (msg){
         return <>
             <main className="profile content">
                 <div className="container height-100 d-flex justify-content-center align-items-center mt-4 mb-4">
@@ -85,6 +83,7 @@ function EditProfile(props) {
                 </div>
             </main>
         </>;
+    }
 
     // Displays entire layout for settings page
     return <>

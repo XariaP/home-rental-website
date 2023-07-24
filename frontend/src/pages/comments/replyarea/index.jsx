@@ -28,7 +28,7 @@ export default function ReplyBox({commentID, refresh}) {
         })
         .then((data) => {
             var msg;
-            // Comment successfully created, clear inputs
+            // Comment successfully created so clear input fields and refresh page to display new comment immediately
             if (code == 201){
                 msg = "Comment posted!";
                 document.getElementById(textboxID).value = "";
