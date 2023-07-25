@@ -42,10 +42,11 @@ class AddPropertyCommentView(CreateAPIView):
             raise PermissionDenied() # Error 403
         else:
             comments = property.comments.filter(written_by=guest)
+            # Add constraint for only one comment
             if (user_reservations.count() == comments.count()):
                 return Response("You already left a comment for this reservation.")
         return super().post(request)
-    # Add constraint for only one comment
+
 
     
 class ReplyPropertyCommentView(CreateAPIView):
