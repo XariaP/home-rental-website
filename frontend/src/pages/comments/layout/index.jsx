@@ -98,7 +98,7 @@ export default function CommentPage({type, content, page, link, total}) {
         }
     }
 
-    // Return full name of the user as a string
+    // Return full name of the user or property as a string
     const getName = () => {
         if (type === "user")
             return fname + " " + lname;
